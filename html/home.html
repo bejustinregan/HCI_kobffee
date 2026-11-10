@@ -9,15 +9,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&family=Work+Sans:wght@300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;1,700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- feather icons -->
-    <script src="https://unpkg.com/feather-icons"></script>
-
     <!-- css -->
     <link rel="stylesheet" href="../css/kobffee.css" />
+
+    <!-- javascript -->
+    <script src="https://unpkg.com/feather-icons@4.29.2/dist/feather.min.js" defer></script>
+    <script src="../js/kobffee.js" defer></script>
   </head>
   <body>
     <!-- navbar start -->
@@ -33,7 +34,9 @@
       </div>
 
       <div class="navbar-extra">
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        <a href="#" id="hamburger-menu" aria-label="Menu" aria-expanded="false"
+          ><i data-feather="menu"></i
+        ></a>
       </div>
     </nav>
 
@@ -58,7 +61,13 @@
 
       <div class="row">
         <div class="about-img">
-          <img src="../assets/picture4.jpg" alt="About Us" />
+          <img
+            src="../assets/picture4.jpg"
+            alt="Latte with latte art next to a laptop"
+            width="640"
+            height="427"
+            loading="lazy"
+          />
         </div>
         <div class="content">
           <h3>Why should you choose our coffee?</h3>
@@ -97,7 +106,13 @@
           </p>
         </div>
         <div class="about-img">
-          <img src="../assets/aboutus3.jpg" alt="About Us" />
+          <img
+            src="../assets/aboutus3.jpg"
+            alt="Cafe counter with espresso machine and chalkboard menu"
+            width="683"
+            height="605"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
@@ -114,14 +129,28 @@
       </p>
       <div class="row">
         <div class="menu-card">
-          <img src="../assets/1.jpg" alt="Latte" class="menu-card-img" />
+          <img
+            src="../assets/1.jpg"
+            alt="Coffee beans"
+            class="menu-card-img"
+            width="300"
+            height="199"
+            loading="lazy"
+          />
           <h3 class="menu-card-title">OUR BEANS</h3>
           <p class="menu-card-price">
             Biji kopi grade Specialty Arabica dari perkebunan terbaik Indonesia
           </p>
         </div>
         <div class="menu-card">
-          <img src="../assets/latte.jpg" alt="Latte" class="menu-card-img" />
+          <img
+            src="../assets/latte.jpg"
+            alt="Latte"
+            class="menu-card-img"
+            width="299"
+            height="299"
+            loading="lazy"
+          />
           <h3 class="menu-card-title">COFFEE</h3>
           <p class="menu-card-price">
             Dari minunan tradisional berbasis espresso sampai berbagai minuman
@@ -129,7 +158,14 @@
           </p>
         </div>
         <div class="menu-card">
-          <img src="../assets/2.jpg" alt="Latte" class="menu-card-img" />
+          <img
+            src="../assets/2.jpg"
+            alt="Non-coffee drinks"
+            class="menu-card-img"
+            width="299"
+            height="168"
+            loading="lazy"
+          />
           <h3 class="menu-card-title">NON-COFFEE</h3>
           <p class="menu-card-price">
             Kami juga memiliki menu non-coffee untuk kamu yang ingin pilihan
@@ -137,7 +173,14 @@
           </p>
         </div>
         <div class="menu-card">
-          <img src="../assets/food.jpg" alt="Latte" class="menu-card-img" />
+          <img
+            src="../assets/food.jpg"
+            alt="Food and snacks"
+            class="menu-card-img"
+            width="400"
+            height="326"
+            loading="lazy"
+          />
           <h3 class="menu-card-title">FOOD & SNACK</h3>
           <p class="menu-card-price">
             Berbagai macam makanan ringan sampai makanan utama siap menemani
@@ -162,26 +205,55 @@
       <div class="row">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253874.1162371995!2d106.59243591376148!3d-6.159801907305155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7c9d110d719%3A0x300c5e82dd4b8a0!2sWest%20Jakarta%2C%20Kebonjeruk%2C%20West%20Jakarta%20City%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1686789026190!5m2!1sen!2sid"
+          title="Kobffee location map"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           class="map"
         ></iframe>
 
-        <form action="" onsubmit="formValidation(event)">
+        <form id="contact-form">
           <div class="input-group">
             <i data-feather="user"></i>
-            <input type="text" placeholder="name" id="user" />
+            <label for="user" class="sr-only">Name</label>
+            <input
+              type="text"
+              placeholder="name"
+              id="user"
+              name="name"
+              autocomplete="name"
+              required
+              minlength="3"
+            />
           </div>
           <div class="input-group">
             <i data-feather="mail"></i>
-            <input type="text" placeholder="email" id="email" />
+            <label for="email" class="sr-only">Email</label>
+            <input
+              type="email"
+              placeholder="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+            />
           </div>
           <div class="input-group">
             <i data-feather="phone"></i>
-            <input type="text" placeholder="phone number" id="number" />
+            <label for="number" class="sr-only">Phone number</label>
+            <input
+              type="tel"
+              placeholder="phone number"
+              id="number"
+              name="phone"
+              autocomplete="tel"
+              required
+              pattern="[0-9+\-\s]{8,16}"
+              title="8-16 digits"
+            />
           </div>
           <button type="submit" class="btn">send message</button>
+          <p id="form-status" class="form-status" role="status"></p>
         </form>
       </div>
     </section>
@@ -192,9 +264,9 @@
 
     <footer>
       <div class="socials">
-        <a href="#"><i data-feather="instagram"></i></a>
-        <a href="#"><i data-feather="twitter"></i></a>
-        <a href="#"><i data-feather="facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i data-feather="instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i data-feather="twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i data-feather="facebook"></i></a>
       </div>
       <div class="links">
         <a href="#home">Home</a>
@@ -208,13 +280,5 @@
     </footer>
 
     <!-- footer section end -->
-
-    <!-- feather icons -->
-    <script>
-      feather.replace();
-    </script>
-
-    <!-- javascript -->
-    <script src="../js/kobffee.js"></script>
   </body>
 </html>

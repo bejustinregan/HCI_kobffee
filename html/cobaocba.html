@@ -9,38 +9,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&family=Work+Sans:wght@300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;1,700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- feather icons -->
-    <script src="https://unpkg.com/feather-icons"></script>
-
     <!-- css -->
     <link rel="stylesheet" href="../css/kobffee.css" />
+
+    <!-- javascript -->
+    <script src="https://unpkg.com/feather-icons@4.29.2/dist/feather.min.js" defer></script>
+    <script src="/js/kobffee.js" defer></script>
   </head>
   <body>
     <nav class="navbar">
       <a href="/html/home.html" class="navbar-logo">kob<span>ffee</span>.</a>
 
       <div class="navbar-nav">
-        <a href="/html/home.html">Home</a>
-        <a href="/html/home.html">About Us</a>
-        <a href="/html/home.html">Our Menu</a>
-        <a href="/html/home.html">Contact Us</a>
+        <a href="/html/home.html#home">Home</a>
+        <a href="/html/home.html#about">About Us</a>
+        <a href="/html/home.html#menu">Our Menu</a>
+        <a href="/html/home.html#contact">Contact Us</a>
       </div>
 
       <div class="navbar-extra">
-        <a href="#" id="shopping-cart-button"
+        <a
+          href="#"
+          id="shopping-cart-button"
+          aria-label="Shopping cart"
+          aria-expanded="false"
           ><i data-feather="shopping-cart"></i
         ></a>
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        <a href="#" id="hamburger-menu" aria-label="Menu" aria-expanded="false"
+          ><i data-feather="menu"></i
+        ></a>
       </div>
 
       <!-- shopping cart -->
       <div class="shopping-cart">
         <div class="cart-item">
-          <img src="/assets/b1.jpg" alt="product1" />
+          <img src="/assets/b1.webp" alt="Special coffee bean" width="800" height="800" />
           <div class="item-detail">
             <h3>Product 1</h3>
             <div class="item-price">IDR 30K</div>
@@ -48,7 +55,7 @@
           <i data-feather="trash-2" class="delete-icon"></i>
         </div>
         <div class="cart-item">
-          <img src="/assets/b1.jpg" alt="product1" />
+          <img src="/assets/b1.webp" alt="Special coffee bean" width="800" height="800" />
           <div class="item-detail">
             <h3>Product 1</h3>
             <div class="item-price">IDR 30K</div>
@@ -56,7 +63,7 @@
           <i data-feather="trash-2" class="delete-icon"></i>
         </div>
         <div class="cart-item">
-          <img src="/assets/b1.jpg" alt="product1" />
+          <img src="/assets/b1.webp" alt="Special coffee bean" width="800" height="800" />
           <div class="item-detail">
             <h3>Product 1</h3>
             <div class="item-price">IDR 30K</div>
@@ -66,27 +73,29 @@
       </div>
     </nav>
 
-    <!-- footer section start -->
-
-    <section class="products" , id="products">
+    <section class="products" id="products">
       <h2>Our Coffee Beans</h2>
 
       <div class="row">
         <div class="product-card">
           <div class="product-icon">
-            <a href="#" id="shopping-cart"
+            <a href="#" class="add-to-cart" aria-label="Add Special Coffee Bean to cart"
               ><i data-feather="shopping-cart"></i
             ></a>
-            <a href="#" id="eye" class="item-detail-button"
+            <a
+              href="#"
+              class="item-detail-button"
+              data-modal-target="detail-item"
+              aria-label="View Special Coffee Bean details"
               ><i data-feather="eye"></i
             ></a>
           </div>
           <div class="product-image">
-            <img src="/assets/b1.jpg" alt="product1" />
+            <img src="/assets/b1.webp" alt="Special coffee bean package" width="800" height="800" />
           </div>
           <div class="product-content">
             <h3>Special Coffe Bean</h3>
-            <div class="product-stars">
+            <div class="product-stars" aria-label="Rated 5 out of 5">
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
@@ -98,19 +107,23 @@
         </div>
         <div class="product-card">
           <div class="product-icon">
-            <a href="#" id="shopping-cart"
+            <a href="#" class="add-to-cart" aria-label="Add Organic Coffee Bean to cart"
               ><i data-feather="shopping-cart"></i
             ></a>
-            <a href="#" id="eye" class="item-detail-button2"
+            <a
+              href="#"
+              class="item-detail-button"
+              data-modal-target="detail-item2"
+              aria-label="View Organic Coffee Bean details"
               ><i data-feather="eye"></i
             ></a>
           </div>
           <div class="product-image">
-            <img src="/assets/b2.jpg" alt="product1" />
+            <img src="/assets/b2.webp" alt="Organic coffee bean package" width="800" height="800" />
           </div>
           <div class="product-content">
             <h3>Organic Coffe Bean</h3>
-            <div class="product-stars">
+            <div class="product-stars" aria-label="Rated 5 out of 5">
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
@@ -123,17 +136,19 @@
       </div>
     </section>
 
+    <!-- footer section start -->
+
     <footer>
       <div class="socials">
-        <a href="#"><i data-feather="instagram"></i></a>
-        <a href="#"><i data-feather="twitter"></i></a>
-        <a href="#"><i data-feather="facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i data-feather="instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i data-feather="twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i data-feather="facebook"></i></a>
       </div>
       <div class="links">
-        <a href="#home">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#menu">Our Menu</a>
-        <a href="#contact">Contact US</a>
+        <a href="/html/home.html#home">Home</a>
+        <a href="/html/home.html#about">About Us</a>
+        <a href="/html/home.html#menu">Our Menu</a>
+        <a href="/html/home.html#contact">Contact US</a>
       </div>
       <div class="credit">
         <p>kobffee &copy; 2023</p>
@@ -143,11 +158,11 @@
     <!-- footer section end -->
 
     <!-- modal box -->
-    <div class="desc" id="detail-item">
+    <div class="desc" id="detail-item" role="dialog" aria-modal="true" aria-label="Special Kobffee Coffee Beans">
       <div class="desc-container">
-        <a href="#" class="close"><i data-feather="x"></i></a>
+        <a href="#" class="close" aria-label="Close"><i data-feather="x"></i></a>
         <div class="desc-content">
-          <img src="/assets/b1.jpg" alt="product1" />
+          <img src="/assets/b1.webp" alt="Special coffee bean package" width="800" height="800" />
           <div class="product-content">
             <h3>Special Kobffee Coffee Beans</h3>
             <p>
@@ -156,7 +171,7 @@
               this species is selectively picked by hand and processed carefully
               so that it has a rich and complex taste.
             </p>
-            <div class="product-stars">
+            <div class="product-stars" aria-label="Rated 5 out of 5">
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
@@ -172,11 +187,11 @@
       </div>
     </div>
 
-    <div class="desc" id="detail-item2">
+    <div class="desc" id="detail-item2" role="dialog" aria-modal="true" aria-label="Organic Kobffee Coffee Beans">
       <div class="desc-container">
-        <a href="#" class="close2"><i data-feather="x"></i></a>
+        <a href="#" class="close" aria-label="Close"><i data-feather="x"></i></a>
         <div class="desc-content">
-          <img src="/assets/b2.jpg" alt="product1" />
+          <img src="/assets/b2.webp" alt="Organic coffee bean package" width="800" height="800" />
           <div class="product-content">
             <h3>Organic Kobffee Coffee Benas</h3>
             <p>
@@ -185,7 +200,7 @@
               complex flavors, ranging from flavors of fresh fruit, caramel, to
               an elegant bitterness.
             </p>
-            <div class="product-stars">
+            <div class="product-stars" aria-label="Rated 5 out of 5">
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
               <i data-feather="star" class="star"></i>
@@ -201,13 +216,5 @@
       </div>
     </div>
     <!-- modal box end-->
-    <!-- feather icons -->
-    <script>
-      feather.replace();
-    </script>
-
-    <!-- javascript -->
-    <script></script>
-    <script src="/js/kobffee.js"></script>
   </body>
 </html>

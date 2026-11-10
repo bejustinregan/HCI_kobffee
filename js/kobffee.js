@@ -1,95 +1,70 @@
-// toggle class active
+feather.replace();
+
+// navbar & shopping cart toggles
 const navbarNav = document.querySelector(".navbar-nav");
-
-document.querySelector("#hamburger-menu").onclick = () => {
-  navbarNav.classList.toggle("active");
-};
-
 const hamburger = document.querySelector("#hamburger-menu");
+const shoppingCart = document.querySelector(".shopping-cart");
+const cartButton = document.querySelector("#shopping-cart-button");
 
-document.addEventListener("click", function (e) {
-  if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
-    navbarNav.classList.remove("active");
-  }
+hamburger?.addEventListener("click", (e) => {
+  e.preventDefault();
+  const isOpen = navbarNav.classList.toggle("active");
+  hamburger.setAttribute("aria-expanded", isOpen);
 });
 
-const shoppingCart = document.querySelector(".shopping-cart");
+cartButton?.addEventListener("click", (e) => {
+  e.preventDefault();
+  const isOpen = shoppingCart.classList.toggle("active");
+  cartButton.setAttribute("aria-expanded", isOpen);
+});
 
-document.querySelector("#shopping-cart-button").onclick = () => {
-  shoppingCart.classList.toggle("active");
-};
+// Close the mobile menu once a destination is chosen
+navbarNav?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => navbarNav.classList.remove("active"));
+});
 
 // klik diluar elemen
-const hm = document.querySelector("#hamburger-menu");
-const sc = document.querySelector("#shopping-cart-button");
-
-document.addEventListener("click", function (e) {
-  if (!hm.contains(e.target) && !navbarNav.contains(e.target)) {
+document.addEventListener("click", (e) => {
+  if (hamburger && !hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
     navbarNav.classList.remove("active");
   }
-
-  if (!sc.contains(e.target) && !shoppingCart.contains(e.target)) {
+  if (cartButton && !cartButton.contains(e.target) && !shoppingCart.contains(e.target)) {
     shoppingCart.classList.remove("active");
   }
 });
 
-function formValidation(a) {
-  a.preventDefault();
-  var username = document.getElementById("user");
-  var email = document.getElementById("email");
-  var phonenumber = document.getElementById("number");
+// contact form
+const contactForm = document.querySelector("#contact-form");
+const formStatus = document.querySelector("#form-status");
 
-  if (username.value.length < 6) {
-    alert("Username must be more than 6 characters");
-  } else if (!email.value.endsWith("@gmail.com")) {
-    alert("Must ends with @gmail.com");
-  } else if (phonenumber.value.length == 0) {
-    alert("Phone number can't empty");
-  } else {
-    alert("berhasil");
-  }
-}
-
-// desc
-
-const itemDesc = document.querySelector("#detail-item");
-const itemDescButton = document.querySelectorAll(".item-detail-button");
-
-itemDescButton.forEach((btn) => {
-  btn.onclick = (e) => {
-    itemDesc.style.display = "flex";
-    e.preventDefault();
-  };
+contactForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // Field rules live in the HTML attributes; this only runs once they pass
+  formStatus.textContent = "Thank you, your message has been received.";
+  contactForm.reset();
 });
 
-document.querySelector(".desc .close").onclick = (e) => {
-  itemDesc.style.display = "none";
-  e.preventDefault();
-};
+// product detail modal
+const closeModal = (modal) => modal.classList.remove("open");
 
-window.onclick = (e) => {
-  if (e.target == itemDesc) {
-    itemDesc.style.display = "none";
-  }
-};
-
-const itemDesc2 = document.querySelector("#detail-item2");
-const itemDescButton2 = document.querySelectorAll(".item-detail-button2");
-
-itemDescButton2.forEach((btn) => {
-  btn.onclick = (e) => {
-    itemDesc2.style.display = "flex";
+document.querySelectorAll("[data-modal-target]").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
     e.preventDefault();
-  };
+    document.getElementById(btn.dataset.modalTarget)?.classList.add("open");
+  });
 });
 
-document.querySelector(".desc .close2").onclick = (e) => {
-  itemDesc2.style.display = "none";
-  e.preventDefault();
-};
+document.querySelectorAll(".desc").forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal || e.target.closest(".close")) {
+      e.preventDefault();
+      closeModal(modal);
+    }
+  });
+});
 
-window.onclick = (e) => {
-  if (e.target == itemDesc2) {
-    itemDesc2.style.display = "none";
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    document.querySelectorAll(".desc.open").forEach(closeModal);
   }
-};
+});
